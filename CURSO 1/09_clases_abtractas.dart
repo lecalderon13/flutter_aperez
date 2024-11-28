@@ -1,29 +1,47 @@
-void main(){
-  final miPlanta = PlantaViento(monto: 1000); 
-  print(miPlanta.capacidad_electrica);
+void main() {
+  final planta_eolica= PlantaEolica(energia_requerida: 100);
+  final planta_nuclear=PlantaNuclear(capacidad_energia: 600);
+  print("Energia Eolica-Capacidad: ${CargaTelefono(planta_eolica)}");
+  print("Energia Nuclear-Capacidad: ${CargaTelefono(planta_nuclear)}");
 }
  
-enum TipoPlanta{Eolica,Hidraulica,Electrica}
+enum TipoPlanta{eolica,hidraulica,electrica,nuclear}
  
-double CargaCell(PlantaElectrica planta){
-    if(planta.capacidad_electrica <= 100){
-      throw Exception("No tiene suficiente energia");
-    }
-    return planta.capacidad_electrica; 
+double CargaTelefono(Planta tipo_energia){
+      if(tipo_energia.capacidad_energia<10){
+        print("No hay suficiente energia");
+      } 
+      return tipo_energia.capacidad_energia;
 }
-abstract class PlantaElectrica{
-    double capacidad_electrica; // Quitado el uso de valores nulos.
-    TipoPlanta tipo_planta;
-   PlantaElectrica({required this.capacidad_electrica, required              this.tipo_planta});
-  void ConsumoEnergia(double energia);
-}
- 
-class PlantaViento extends PlantaElectrica{
-  PlantaViento({required double monto}):
-                       super(capacidad_electrica:monto,
-                       tipo_planta:TipoPlanta.Hidraulica);
-  @override
-  void ConsumoEnergia(double energia){
-    capacidad_electrica=energia;
+abstract class Planta{
+  double capacidad_energia;
+  final TipoPlanta tipo_planta;
+  Planta({required this.capacidad_energia,
+          required this.tipo_planta});
+  void consumoEnergia(double monto){
   }
+}
+ 
+//Extends: Herencia para heredar tanto atributos y metodos
+class PlantaEolica extends Planta{
+      double energia_requerida;
+      PlantaEolica ({required this.energia_requerida}):
+                    super(capacidad_energia: energia_requerida,
+                         tipo_planta: TipoPlanta.eolica);
+      @override
+      void consumoEnergia( double monto ) {
+        capacidad_energia -= monto;
+      }            
+}
+//Implements es como herencia pero solo hereda metodos
+class PlantaNuclear implements Planta {
+      @override
+      double capacidad_energia;
+      @override
+      TipoPlanta tipo_planta=TipoPlanta.nuclear;
+      PlantaNuclear({required double this.capacidad_energia});
+      @override
+      void consumoEnergia( double monto ) {
+        capacidad_energia -= monto*0.5;
+      }       
 }
