@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class MyMessageBubble extends StatelessWidget {
-  const MyMessageBubble({super.key});
+  final String message;
+
+ const MyMessageBubble({super.key, required this.message}); // Constructor que requiere el mensaje.
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
@@ -15,9 +16,9 @@ class MyMessageBubble extends StatelessWidget {
           decoration: BoxDecoration(
               color: colors.primary, borderRadius: BorderRadius.circular(10)),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+            padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
             child: Text(
-              "Fondo bonito",
+              message,
               style: TextStyle(color: Colors.black54),
             ),
           ),

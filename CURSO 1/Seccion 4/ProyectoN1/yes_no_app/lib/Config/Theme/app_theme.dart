@@ -14,7 +14,7 @@ class AppTheme {
   final int colorElegido;
 
   AppTheme({this.colorElegido = 0}) : assert(colorElegido >= 1,
-                                     "Colores entre 0 y ${colorElegido}");
+                                     "Colores entre 0 y $colorElegido");
 
   //Informacion que construira el tema
   ThemeData theme() {

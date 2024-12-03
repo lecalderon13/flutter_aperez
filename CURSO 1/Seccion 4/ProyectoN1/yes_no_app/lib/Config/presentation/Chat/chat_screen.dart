@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:yes_no_app/Config/Screens/my_message_bubble.dart';
+import 'package:yes_no_app/Config/presentation/Providers/chat_provider.dart';
 import 'package:yes_no_app/Config/presentation/Widgets/Shared/message_field_box.dart';
 import 'package:yes_no_app/Config/presentation/Widgets/her_message_bubble.dart';
+import 'package:yes_no_app/Domain/Entities/message.dart';
 
 class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
@@ -20,7 +23,7 @@ class ChatScreen extends StatelessWidget {
         title: const Text("Crush de Hollywood"),
         centerTitle: false,
       ),
-      body: ChatView(),
+      body: const ChatView(),
     );
   }
 }
@@ -32,6 +35,8 @@ class ChatView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final chatProvider = context.watch<ChatProvider>();
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -39,18 +44,19 @@ class ChatView extends StatelessWidget {
           children: [
             Expanded(
                 child: ListView.builder(
-                    itemCount: 50,
+                    itemCount: chatProvider.message.length,
                     itemBuilder: (context, index) {
-                      return (index % 2 == 0)
-                          ? const HerMessageBubble()
-                          : const MyMessageBubble();
+                      final message = chatProvider.message[index];
 
-                      const MyMessageBubble();
+                      return (message.fromWho == FromWho.hers)
+                          ? const HerMessageBubble()
+                          : const MyMessageBubble( message : "Hola, soy un mensaje dinamico" );
                     })),
             const Text("hOLA"),
-            //Caja de texto
-            const MessageFieldBox()
-
+            // Caja de texto
+            MessageFieldBox(
+             onvALUE: chatProvider.sendMessage,
+            ),
           ],
         ),
       ),
