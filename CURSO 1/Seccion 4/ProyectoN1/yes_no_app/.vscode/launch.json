@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "yes_no_app",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart", 
+            "flutterMode": "debug"  // Configuración para modo de depuración
+        },
+        {
+            "name": "yes_no_app (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "flutterMode": "profile"  // Configuración para modo de perfil
+        },
+        {
+            "name": "yes_no_app (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "flutterMode": "release"  // Configuración para modo de liberación
+        }
+    ]
+}

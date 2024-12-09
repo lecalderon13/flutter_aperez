@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
 
 class MyMessageBubble extends StatelessWidget {
-  final String message;
+  final Message message;
 
- const MyMessageBubble({super.key, required this.message}); // Constructor que requiere el mensaje.
+  const MyMessageBubble({
+    super.key, 
+    required this.message
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +18,16 @@ class MyMessageBubble extends StatelessWidget {
       children: [
         Container(
           decoration: BoxDecoration(
-              color: colors.primary, borderRadius: BorderRadius.circular(10)),
+              color: colors.primary, borderRadius: BorderRadius.circular(20)),
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: Text(
-              message,
-              style: TextStyle(color: Colors.black54),
+              message.text,
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ),
-        const SizedBox(height: 10)
+        const SizedBox(height: 5)
       ],
     );
   }
