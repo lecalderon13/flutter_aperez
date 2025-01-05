@@ -9,7 +9,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_material3: ^3.0.0
 
 dev_dependencies:
   flutter_test:
