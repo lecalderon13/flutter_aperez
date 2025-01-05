@@ -15,9 +15,16 @@ class MenuItems {
 
 const appMenuItems = <MenuItems>[
   MenuItems(
+    title: "Botones",
+    subTitle: "Botones de Flutter",
+    link: "/buttons",
+    icon: Icons.smart_button_outlined,  // Aquí usas el icono correctamente
+  ),
+
+  MenuItems(
     title: "Tarjetas",
     subTitle: "Un contenedor estilizado",
-    link: "/card",
+    link: "/cards",
     icon: Icons.credit_card,  // Aquí usas el icono correctamente
   ),
 ];
