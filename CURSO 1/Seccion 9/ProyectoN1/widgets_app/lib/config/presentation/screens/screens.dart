@@ -1,3 +1,10 @@
-import 'package:widgets_app/config/presentation/screens/buttons/buttons_screen.dart';
-import 'package:widgets_app/config/presentation/screens/cards/card_screen.dart';
-import 'package:widgets_app/config/presentation/screens/home/home_screen.dart';
+export 'package:flutter/material.dart';
+export 'package:widgets_app/config/presentation/screens/animated/animatedScreen.dart';
+export 'package:widgets_app/config/presentation/screens/appTutorial/appTutorialScreen.dart';
+export 'package:widgets_app/config/presentation/screens/buttons/buttons_screen.dart';
+export 'package:widgets_app/config/presentation/screens/cards/card_screen.dart';
+export 'package:widgets_app/config/presentation/screens/home/home_screen.dart';
+export 'package:widgets_app/config/presentation/screens/infiniteScroll/infiniteScrollScreen.dart';
+export 'package:widgets_app/config/presentation/screens/progress/progressScreen.dart';
+export 'package:widgets_app/config/presentation/screens/snackBar/snackBarScreen.dart';
+export 'package:widgets_app/config/presentation/screens/uiControls/uiControlsScreen.dart';
