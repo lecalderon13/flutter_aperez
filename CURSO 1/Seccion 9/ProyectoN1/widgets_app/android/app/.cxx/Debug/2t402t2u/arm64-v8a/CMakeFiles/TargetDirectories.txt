@@ -1,0 +1,2 @@
+D:/Capacitacion FLUTTER/flutter_aperez/CURSO 1/Seccion 9/ProyectoN1/widgets_app/android/app/.cxx/Debug/2t402t2u/arm64-v8a/CMakeFiles/edit_cache.dir
+D:/Capacitacion FLUTTER/flutter_aperez/CURSO 1/Seccion 9/ProyectoN1/widgets_app/android/app/.cxx/Debug/2t402t2u/arm64-v8a/CMakeFiles/rebuild_cache.dir

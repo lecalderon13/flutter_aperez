@@ -40,7 +40,7 @@ class _ButtonsView extends StatelessWidget {
             ElevatedButton(
                 onPressed: () {}, child: const Text("Elevated Able")),
             const ElevatedButton(
-                onPressed: null, child: const Text("Elevated Disabled")),
+                onPressed: null, child: Text("Elevated Disabled")),
             FilledButton(onPressed: () {}, child: const Text("Filled")),
             ElevatedButton.icon(
                 onPressed: () {},
@@ -63,8 +63,8 @@ class _ButtonsView extends StatelessWidget {
                 onPressed: () {},
                 icon: const Icon(Icons.app_registration_rounded),
                 style: ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(colors.primary),
-                    iconColor: MaterialStatePropertyAll(Colors.white)))
+                    backgroundColor: WidgetStatePropertyAll(colors.primary),
+                    iconColor: WidgetStatePropertyAll(Colors.white)))
           ],
         ),
       ),

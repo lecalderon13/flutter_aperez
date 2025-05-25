@@ -2,6 +2,8 @@ import 'package:go_router/go_router.dart';
 import 'package:widgets_app/config/presentation/screens/buttons/buttons_screen.dart';
 import 'package:widgets_app/config/presentation/screens/cards/card_screen.dart';
 import 'package:widgets_app/config/presentation/screens/home/home_screen.dart';
+import 'package:widgets_app/config/presentation/screens/progress/progressScreen.dart';
+import 'package:widgets_app/config/presentation/screens/screens.dart';
 
 final appRouter = GoRouter(
   initialLocation: '/',
@@ -20,6 +22,31 @@ final appRouter = GoRouter(
       path: '/cards',
       name: CardScreen.name,
       builder: (context, state) => const CardScreen(),
+    ),
+    GoRoute(
+      path: '/progress',
+      name: ProgressScreen.name,
+      builder: (context, state) => const ProgressScreen(),
+    ),
+    GoRoute(
+      path: '/snackbars',
+      name: Snackbarscreen.name,
+      builder: (context, state) => const Snackbarscreen(),
+    ),
+    GoRoute(
+      path: '/animated',
+      name: AnimatedScreen.name,
+      builder: (context, state) => const AnimatedScreen(),
+    ),
+    GoRoute(
+      path: '/ui-controls',
+      name: Uicontrolsscreen.name,
+      builder: (context, state) => const Uicontrolsscreen(),
+    ),
+    GoRoute(
+      path: '/tutorial',
+      name: Apptutorialscreen.name,
+      builder: (context, state) => const Apptutorialscreen(),
     ),
   ],
 );

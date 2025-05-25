@@ -1,0 +1,48 @@
+{
+    // Use IntelliSense para saber los atributos posibles.
+    // Mantenga el puntero para ver las descripciones de los existentes atributos.
+    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "flutter_prueba",
+            "cwd": "ProyectoN1\\flutter_prueba",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flutter_prueba (profile mode)",
+            "cwd": "ProyectoN1\\flutter_prueba",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "flutter_prueba (release mode)",
+            "cwd": "ProyectoN1\\flutter_prueba",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "widgets_app",
+            "cwd": "ProyectoN1\\widgets_app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "widgets_app (profile mode)",
+            "cwd": "ProyectoN1\\widgets_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "widgets_app (release mode)",
+            "cwd": "ProyectoN1\\widgets_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

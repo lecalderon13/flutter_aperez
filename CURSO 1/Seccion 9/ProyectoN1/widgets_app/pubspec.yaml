@@ -9,7 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  go_router: ^14.6.2
+  go_router: ^15.1.2  # Versión actualizada (usa solo esta línea)
 
 dev_dependencies:
   flutter_lints: ^5.0.0

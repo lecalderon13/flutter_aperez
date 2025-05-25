@@ -25,9 +25,7 @@ class CardScreen extends StatelessWidget {
 }
 
 class _CardsView extends StatelessWidget {
-  const _CardsView({
-    super.key,
-  });
+  const _CardsView();
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +42,10 @@ class _CardsView extends StatelessWidget {
               (card) => _CardType2(
                   label: card["label"], elevation: card["elevation"]),
             ),
-
             ...cards.map(
               (card) => _CardType3(
                   label: card["label"], elevation: card["elevation"]),
             ),
-
             ...cards.map(
               (card) => _CardType4(
                   label: card["label"], elevation: card["elevation"]),
@@ -63,7 +59,6 @@ class _CardsView extends StatelessWidget {
 
 class _CardType1 extends StatelessWidget {
   const _CardType1({
-    super.key,
     required this.label,
     required this.elevation,
   });
@@ -99,7 +94,6 @@ class _CardType1 extends StatelessWidget {
 
 class _CardType2 extends StatelessWidget {
   const _CardType2({
-    super.key,
     required this.label,
     required this.elevation,
   });
@@ -111,12 +105,10 @@ class _CardType2 extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
 
-
-
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(12)),
-      side: BorderSide(color: colors.outline)),
+          borderRadius: BorderRadius.all(Radius.circular(12)),
+          side: BorderSide(color: colors.outline)),
       elevation: elevation,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
@@ -142,7 +134,6 @@ class _CardType2 extends StatelessWidget {
 
 class _CardType3 extends StatelessWidget {
   const _CardType3({
-    super.key,
     required this.label,
     required this.elevation,
   });
@@ -152,10 +143,7 @@ class _CardType3 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     final colors = Theme.of(context).colorScheme;
-
 
     return Card(
       color: colors.surface,
@@ -173,7 +161,8 @@ class _CardType3 extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.bottomLeft,
-              child: Text("$label - Filled"), // Texto en la esquina inferior izquierda
+              child: Text(
+                  "$label - Filled"), // Texto en la esquina inferior izquierda
             ),
           ],
         ),
@@ -184,7 +173,6 @@ class _CardType3 extends StatelessWidget {
 
 class _CardType4 extends StatelessWidget {
   const _CardType4({
-    super.key,
     required this.label,
     required this.elevation,
   });
@@ -194,34 +182,29 @@ class _CardType4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
-    final colors = Theme.of(context).colorScheme;
-
-
     return Card(
       clipBehavior: Clip.hardEdge,
       elevation: elevation,
       child: Stack(
         children: [
-          Image.network("https://picsum.photos/id/${elevation.toInt()}/600/400",
-          height: 400,
-          fit: BoxFit.cover,
+          Image.network(
+            "https://picsum.photos/id/${elevation.toInt()}/600/400",
+            height: 400,
+            fit: BoxFit.cover,
           ),
-      
           Align(
             alignment: Alignment.topRight,
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(25))
-              ),
+                  color: Colors.white,
+                  borderRadius:
+                      BorderRadius.only(bottomLeft: Radius.circular(25))),
               child: IconButton(
                 icon: const Icon(Icons.more_vert_outlined),
                 onPressed: () {},
               ),
             ), // Botón en la esquina superior derecha
-          ),    
+          ),
         ],
       ),
     );
