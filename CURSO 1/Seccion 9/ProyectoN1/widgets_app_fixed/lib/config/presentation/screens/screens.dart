@@ -1,0 +1,10 @@
+export 'package:flutter/material.dart';
+export 'package:widgets_app_fixed/config/presentation/screens/animated/animatedScreen.dart';
+export 'package:widgets_app_fixed/config/presentation/screens/appTutorial/appTutorialScreen.dart';
+export 'package:widgets_app_fixed/config/presentation/screens/buttons/buttons_screen.dart';
+export 'package:widgets_app_fixed/config/presentation/screens/cards/card_screen.dart';
+export 'package:widgets_app_fixed/config/presentation/screens/home/home_screen.dart';
+export 'package:widgets_app_fixed/config/presentation/screens/infiniteScroll/infiniteScrollScreen.dart';
+export 'package:widgets_app_fixed/config/presentation/screens/progress/progressScreen.dart';
+export 'package:widgets_app_fixed/config/presentation/screens/snackBar/snackBarScreen.dart';
+export 'package:widgets_app_fixed/config/presentation/screens/uiControls/uiControlsScreen.dart';
