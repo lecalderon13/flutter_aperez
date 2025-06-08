@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class SlideInfo {
   final String title;
@@ -10,9 +11,9 @@ class SlideInfo {
 }
 
 final slides = <SlideInfo>[
-  SlideInfo('Busca la comida', 'caption 1', 'assets/Images/1.png'),
-  SlideInfo('Entrega', 'caption 2', 'assets/Images/2.png'),
-  SlideInfo('Provecho', 'caption 3', 'assets/Images/3.png'),
+  SlideInfo('Busca la comida', 'Exercitation voluptate cillum eu aute dolor irure aliquip.', 'assets/images/1.png'),
+  SlideInfo('Entrega rápida', 'Ullamco ullamco duis labore quis occaecat culpa laborum id incididunt.', 'assets/images/2.png'),
+  SlideInfo('Disfruta la comida', 'Ea officia exercitation voluptate nostrud amet esse ut exercitation deserunt est enim est.', 'assets/images/3.png'),
 ];
 
 class AppTutorialScreen extends StatefulWidget {
@@ -26,35 +27,44 @@ class AppTutorialScreen extends StatefulWidget {
 
 class _AppTutorialScreenState extends State<AppTutorialScreen> {
   final PageController pageViewController = PageController();
+  bool endReached = false;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    pageViewController.addListener(() { 
-      print('${pageViewController.page}');
-    });
+    pageViewController.addListener(_onPageChanged);
+  }
+
+  void _onPageChanged() {
+    final page = pageViewController.page ?? 0;
+    if (!endReached && page >= (slides.length - 1.5)) {
+      if (mounted) {
+        setState(() => endReached = true);
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    pageViewController.removeListener(_onPageChanged);
+    pageViewController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
           PageView(
             controller: pageViewController,
             physics: const BouncingScrollPhysics(),
-            onPageChanged: (index) {
-              setState(() {
-               
-              });
-            },
-            children: slides.map(
-              (slideData) => _Slide(
-                title: slideData.title,
-                caption: slideData.caption,
-                imageUrl: slideData.imageUrl,
-              ),
-            ).toList(),
+            children: slides.map((slideData) => _Slide(
+              title: slideData.title, 
+              caption: slideData.caption, 
+              imageUrl: slideData.imageUrl,
+            )).toList(),
           ),
 
           Positioned(
@@ -65,6 +75,21 @@ class _AppTutorialScreenState extends State<AppTutorialScreen> {
               child: const Text('Salir'),
             ),
           ),
+
+          if (endReached)
+            Positioned(
+              bottom: 30,
+              right: 30,
+              child: FilledButton(
+                onPressed: () => context.pop(),
+                child: const Text('Comenzar'),
+              )
+              .animate(
+                onPlay: (controller) => controller.repeat(), // Opcional: para animación continua
+              )
+              .fadeIn(delay: 300.ms, duration: 500.ms)
+              .slideX(begin: 0.5, curve: Curves.easeOut),
+            ),
         ],
       ),
     );
@@ -84,9 +109,6 @@ class _Slide extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final titleStyle = Theme.of(context).textTheme.titleLarge;
-    final captionStyle = Theme.of(context).textTheme.bodySmall;
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Center(
@@ -94,15 +116,16 @@ class _Slide extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image(
-              image: AssetImage(imageUrl),
-              height: 300, // Añade un tamaño fijo para mejor visualización
+            Image.asset(
+              imageUrl,
+              height: 300,
               fit: BoxFit.contain,
+              errorBuilder: (_, __, ___) => const Icon(Icons.error), // Manejo de errores
             ),
             const SizedBox(height: 20),
-            Text(title, style: titleStyle),
+            Text(title, style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 10),
-            Text(caption, style: captionStyle),
+            Text(caption, style: Theme.of(context).textTheme.bodySmall),
           ],
         ),
       ),
